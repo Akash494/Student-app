@@ -1,9 +1,3 @@
-# kubernetes-zero-to-hero
+# Student-APP folder under 2-tier-app
 
-dns name
-"NameServers": [
-            "ns-1242.awsdns-27.org",
-            "ns-1762.awsdns-28.co.uk",
-            "ns-447.awsdns-55.com",
-            "ns-628.awsdns-14.net"
-
+This is the repo to 2 tier application i.e one app and one db
