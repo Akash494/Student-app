@@ -34,19 +34,11 @@ pipeline {
             dir('Student-app/app-dir/src') {
               sh '''
                 docker build -t ${DOCKER_IMAGE}:${IMAGE_TAG} .
+                docker push akash228/student-app:v1
                  '''
             }
          }
       }    
-
-
-        stage('Push to Dockerhub') {
-          steps {
-              sh '''
-                docker push akash228/student-app:v1
-                 '''
-         }
-      }   
 
         
     }
