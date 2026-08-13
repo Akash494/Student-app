@@ -31,7 +31,7 @@ pipeline {
         
         stage('Docker Build') {
           steps {
-            dir('Student-app/appdir/src') {
+            dir('appdir/src') {
               sh '''
                 pwd
                 ls -l
