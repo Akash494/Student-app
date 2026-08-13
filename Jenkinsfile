@@ -2,6 +2,11 @@ pipeline {
 
     agent any
     
+    environment {
+        DOCKER_IMAGE = "akash228/student-app"
+        IMAGE_TAG    = "v1"
+    }
+    
     stages {
         
          stage('Docker Login') {
@@ -33,6 +38,16 @@ pipeline {
             }
          }
       }    
+
+
+        stage('Push to Dockerhub') {
+          steps {
+              sh '''
+                docker 
+                 '''
+         }
+      }   
+
         
     }
 }
