@@ -1,0 +1,38 @@
+pipeline {
+
+    agent any
+    
+    stages {
+        
+         stage('Docker Login') {
+            steps {
+                echo 'Logging in to Docker Hub...'
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'docker-hub',
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        echo "$DOCKER_PASSWORD" | docker login \
+                            -u "$DOCKER_USERNAME" \
+                            --password-stdin
+                    '''
+                }
+            }
+        }
+        
+        stage('Docker Build') {
+          steps {
+            dir('Student-app/app-dir/src') {
+              sh '''
+                docker build -t ${DOCKER_IMAGE}:${IMAGE_TAG} .
+                 '''
+            }
+         }
+      }    
+        
+    }
+}
