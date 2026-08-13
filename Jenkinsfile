@@ -33,6 +33,9 @@ pipeline {
           steps {
             dir('Student-app/appdir/src') {
               sh '''
+                pwd
+                ls -l
+                cat Dockerfile
                 docker build -t ${DOCKER_IMAGE}:${IMAGE_TAG} .
                 docker push akash228/student-app:v1
                  '''
