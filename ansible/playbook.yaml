@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
-
   tasks:
+    - name: Check whoami
+      command: whoami
+
     - name: Check Hostname of server
-      command: whoami;hostname; 
+      command: hostname
