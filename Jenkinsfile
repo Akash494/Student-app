@@ -40,6 +40,14 @@ pipeline {
          }
       }    
 
+    stage('Ansible Deployment') {
+    steps {
+        ansiblePlaybook(
+            playbook: 'ansible/playbook.yml',
+            inventory: 'ansible/inventory.yaml'
+        )
+    }
+}
         
     }
 }
