@@ -43,7 +43,7 @@ pipeline {
     stage('Ansible Deployment') {
     steps {
         ansiblePlaybook(
-            playbook: 'ansible/playbook.yml',
+            playbook: 'ansible/playbook.yaml',
             inventory: 'ansible/inventory.yaml'
         )
     }
