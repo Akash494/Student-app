@@ -45,6 +45,7 @@ pipeline {
         ansiblePlaybook(
             playbook: 'ansible/playbook.yaml',
             inventory: 'ansible/inventory.yaml'
+            credentialsId: 'ansadm-credentials'
         )
     }
 }
