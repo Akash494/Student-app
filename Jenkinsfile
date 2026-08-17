@@ -40,16 +40,18 @@ pipeline {
          }
       }    
 
-    stage('Ansible Deployment') {
+stage('Ansible Deployment') {
     steps {
         sh '''
-           PUBLIC_IP=$(curl -s http://checkip.amazonaws.com/)
-           tee ansible/inventory.yaml > /dev/null <<'EOF'
-           [localhost]
-           44.200.52.249 ansible_user=ansadm
-           EOF
-           cat ansible/inventory.yaml
-          '''
+            cat > ansible/inventory.yaml <<EOF
+            [web]
+            44.200.52.249 ansible_user=ansadm
+            EOF
+
+            echo "Inventory:"
+            cat ansible/inventory.yaml
+        '''
+
         ansiblePlaybook(
             playbook: 'ansible/playbook.yaml',
             inventory: 'ansible/inventory.yaml',
