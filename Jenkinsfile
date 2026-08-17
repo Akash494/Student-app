@@ -48,6 +48,7 @@ pipeline {
            [localhost]
            $PUBLIC_IP ansible_user=ansadm
            EOF
+           cat ansible/inventory.yaml
           '''
         ansiblePlaybook(
             playbook: 'ansible/playbook.yaml',
