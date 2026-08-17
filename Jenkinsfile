@@ -42,16 +42,6 @@ pipeline {
         
 stage('Ansible Deployment') {
     steps {
-        sh '''
-            cat > ansible/inventory.yaml <<EOF
-            [web]
-            44.200.52.249 ansible_user=ansadm
-            EOF
-
-            echo "Inventory:"
-            cat ansible/inventory.yaml
-        '''
-
         ansiblePlaybook(
             playbook: 'ansible/playbook.yaml',
             inventory: 'ansible/inventory.yaml',
