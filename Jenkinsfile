@@ -40,6 +40,29 @@ pipeline {
          }
       }    
 
+stage('Test SSH') {
+    steps {
+        sshagent(['ansadm-credentials']) {
+            sh '''
+                ssh -o StrictHostKeyChecking=no \
+                    ansadm@44.200.52.249 \
+                    "hostname && whoami"
+            '''
+        }
+    }
+}
+
+stage('Test Ansible Connectivity') {
+    steps {
+        ansibleAdhoc(
+            inventory: 'ansible/inventory.yaml',
+            credentialsId: 'ansadm-credentials',
+            module: 'ping',
+            hosts: 'all'
+        )
+    }
+}
+        
 stage('Ansible Deployment') {
     steps {
         sh '''
