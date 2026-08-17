@@ -42,6 +42,13 @@ pipeline {
 
     stage('Ansible Deployment') {
     steps {
+        sh '''
+           PUBLIC_IP=$(curl -s http://checkip.amazonaws.com/)
+           sudo tee Jenkinsfile > /dev/null << EOF
+           [localhost]
+           $PUBLIC_IP ansible_user=ansadm
+           EOF
+          '''
         ansiblePlaybook(
             playbook: 'ansible/playbook.yaml',
             inventory: 'ansible/inventory.yaml',
