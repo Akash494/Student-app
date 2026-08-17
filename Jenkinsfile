@@ -44,9 +44,9 @@ pipeline {
     steps {
         sh '''
            PUBLIC_IP=$(curl -s http://checkip.amazonaws.com/)
-           tee ansible/inventory.yaml > /dev/null <<EOF
+           tee ansible/inventory.yaml > /dev/null <<'EOF'
            [localhost]
-           $PUBLIC_IP ansible_user=ansadm
+           44.200.52.249 ansible_user=ansadm
            EOF
            cat ansible/inventory.yaml
           '''
