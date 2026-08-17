@@ -1,5 +1,5 @@
 ---
-- hosts: web
+- hosts: localhost
   tasks:
     - name: Check whoami
       command: whoami
