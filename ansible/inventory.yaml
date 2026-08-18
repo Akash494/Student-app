@@ -1,2 +1,5 @@
 [localhost]
 98.92.48.136 ansible_user=ansadm
+
+[deploy]
+3.235.130.202 ansible_user=ansadm
