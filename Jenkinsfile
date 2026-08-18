@@ -30,6 +30,11 @@ pipeline {
         }
         
         stage('Docker Build') {
+          when {
+            expression {
+              return params.buildDockerImage
+            }
+         }
           steps {
             dir('appdir/src') {
               sh '''
