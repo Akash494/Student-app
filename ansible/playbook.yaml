@@ -4,5 +4,13 @@
     - name: Check whoami
       command: whoami
 
-    - name: Check Hostname of server
+---
+- hosts: deploy
+  become: true
+  tasks:
+    - name: Check hostname
       command: hostname
+    - name: Copy application
+      copy:
+        src: /tmp/random.txt
+        dest: /opt/random.txt
