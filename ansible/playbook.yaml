@@ -1,16 +1,19 @@
 ---
-- hosts: localhost
+- hosts: k8bootstrap
   tasks:
-    - name: Check whoami
-      command: whoami
 
----
-- hosts: deploy
-  become: true
-  tasks:
-    - name: Check hostname
-      command: hostname
-    - name: Copy application
+    - name: Create deployment directory
+      file:
+        path: /home/ansadm/kubernetes
+        state: directory
+        mode: '0755'
+
+    - name: Copy application manifest
       copy:
-        src: /tmp/random.txt
-        dest: /opt/random.txt
+        src: "{{ lookup('env', 'WORKSPACE') }}/kubernetes/application.yaml"
+        dest: /home/ansadm/kubernetes/application.yaml
+
+    - name: Copy service manifest
+      copy:
+        src: "{{ lookup('env', 'WORKSPACE') }}/kubernetes/service.yaml"
+        dest: /home/ansadm/kubernetes/service.yaml
