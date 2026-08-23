@@ -10,8 +10,8 @@
 
     - name: Copy application manifest
       copy:
-        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/application.yaml"
-        dest: /home/ansadm/k8manifests/application.yaml
+        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/deployment.yaml"
+        dest: /home/ansadm/k8manifests/deployment.yaml
 
     - name: Copy service manifest
       copy:
@@ -20,5 +20,5 @@
         
     - name: Copy service manifest
       copy:
-        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/service.yaml"
+        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/secret.yaml"
         dest: /home/ansadm/k8manifests/secret.yaml
