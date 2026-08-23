@@ -4,16 +4,21 @@
 
     - name: Create deployment directory
       file:
-        path: /home/ansadm/kubernetes
+        path: /home/ansadm/k8manifests
         state: directory
         mode: '0755'
 
     - name: Copy application manifest
       copy:
-        src: "{{ lookup('env', 'WORKSPACE') }}/kubernetes/application.yaml"
-        dest: /home/ansadm/kubernetes/application.yaml
+        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/application.yaml"
+        dest: /home/ansadm/k8manifests/application.yaml
 
     - name: Copy service manifest
       copy:
-        src: "{{ lookup('env', 'WORKSPACE') }}/kubernetes/service.yaml"
-        dest: /home/ansadm/kubernetes/service.yaml
+        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/service.yaml"
+        dest: /home/ansadm/k8manifests/service.yaml
+        
+    - name: Copy service manifest
+      copy:
+        src: "{{ lookup('env', 'WORKSPACE') }}/k8manifests/service.yaml"
+        dest: /home/ansadm/k8manifests/secret.yaml
