@@ -25,15 +25,15 @@
 
     - name: Apply Kubernetes secret
       ansible.builtin.command:
-        cmd: kubectl apply -f secret.yaml
+        cmd: sudo kubectl apply -f secret.yaml
         chdir: /home/ansadm/k8manifests
 
     - name: Apply Kubernetes deployment
       ansible.builtin.command:
-        cmd: kubectl apply -f deployment.yaml
+        cmd: sudo kubectl apply -f deployment.yaml
         chdir: /home/ansadm/k8manifests
 
     - name: Apply Kubernetes service
       ansible.builtin.command:
-        cmd: kubectl apply -f service.yaml
+        cmd: sudo kubectl apply -f service.yaml
         chdir: /home/ansadm/k8manifests
