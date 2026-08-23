@@ -1,5 +1,5 @@
 ---
-- hosts: k8bootstrap
+- hosts: kubernetes
   tasks:
 
     - name: Create deployment directory
