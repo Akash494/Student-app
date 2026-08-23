@@ -47,28 +47,11 @@ pipeline {
         
 stage('Ansible Deployment') {
     steps {
-        withCredentials([
-            usernamePassword(
-                credentialsId: 'jenkins-ansible',
-                usernameVariable: 'SERVER1_USER',
-                passwordVariable: 'SERVER1_PASS'
-            ),
-            usernamePassword(
-                credentialsId: 'kubernetes-ansible',
-                usernameVariable: 'SERVER2_USER',
-                passwordVariable: 'SERVER2_PASS'
-            )
-        ]) {
-            sh '''
-                ansible-playbook \
-                  -i ansible/inventory.yaml \
-                  ansible/playbook.yaml \
-                  -e "server1_user=$SERVER1_USER" \
-                  -e "server1_pass=$SERVER1_PASS" \
-                  -e "server2_user=$SERVER2_USER" \
-                  -e "server2_pass=$SERVER2_PASS"
-            '''
-        }
+        ansiblePlaybook(
+            playbook: 'ansible/playbook.yaml',
+            inventory: 'ansible/inventory.yaml',
+            credentialsId: 'ansible-credentials'
+        )
     }
 }
         
