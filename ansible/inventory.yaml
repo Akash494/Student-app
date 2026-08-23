@@ -2,10 +2,8 @@ all:
   children:
     deploy:
       hosts:
-        localhost:
-          ansible_host: 98.92.48.136
-          ansible_user: ansadm
+        jenkins:
+          ansible_host: 13.221.152.244
 
-        deploy:
-          ansible_host: 3.235.130.202
-          ansible_user: ansadm
+        kubernetes:
+          ansible_host: 3.238.70.156
