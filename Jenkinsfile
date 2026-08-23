@@ -48,7 +48,7 @@ pipeline {
 stage('Ansible Deployment') {
     steps {
         ansiblePlaybook(
-            playbook: 'ansible/playbook.yaml',
+            playbook: 'ansible/deploy.yaml',
             inventory: 'ansible/inventory.yaml',
             credentialsId: 'ansible-credentials'
         )
